@@ -28,6 +28,7 @@ const Left = styled.div`
 `;
 const Right = styled.div`
   flex: 3;
+  position: relative;
 `;
 
 const Title = styled.h1`
@@ -60,6 +61,14 @@ bottom: 0;
 left: 0;
 right: 0;
 margin: auto;
+animation: animate 2s infinite ease alternate;
+
+
+@keyframes animate {
+  to {
+    transform: translateY(20px);
+  }
+}
 `;
 const Hero = () => {
   return (
