@@ -10,10 +10,14 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@react-three/drei": "^9.88.7",
+    "@react-three/fiber": "^8.15.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-simple-maps": "^3.0.0",
-    "styled-components": "^6.1.19"
+    "stats.js": "^0.17.0",
+    "styled-components": "^6.1.19",
+    "three": "^0.160.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

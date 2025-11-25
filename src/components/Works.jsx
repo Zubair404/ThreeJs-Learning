@@ -1,13 +1,16 @@
 //rafce
-import React from "react";  
+import React from "react";
 import styled from "styled-components";
+import WebDesign from "./WebDesign";
+import Development from "./Development";
+import ProductDesign from "./ProductDesign";
 
 const data = [
   "Web Design",
   "App Development",
   "Graphic Design",
   "Digital Marketing",
-  "SEO Optimization"
+  "SEO Optimization",
 ];
 const Section = styled.div`
   height: 100vh;
@@ -63,18 +66,27 @@ const ListItem = styled.li`
   }
 `;
 const Works = () => {
+  const [works, setWorks] = useState("Web Design");
   return (
     <Section>
       <Container>
         <Left>
           <List>
             {data.map((item) => (
-              <ListItem key={item} text={item}>{item}</ListItem>
+              <ListItem key={item} text={item} onClick={() => setWorks(item)}>
+                {item}
+              </ListItem>
             ))}
           </List>
         </Left>
         <Right>
-         
+          {works === "Web Design" ? (
+            <WebDesign />
+          ) : works === "Development" ? (
+            <Development />
+          ) : works === "Product Design" ? (
+            <ProductDesign />
+          ) : null}
         </Right>
       </Container>
     </Section>
