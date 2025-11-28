@@ -1,5 +1,5 @@
 //rafce
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import WebDesign from "./WebDesign";
 import Development from "./Development";
@@ -8,9 +8,7 @@ import ProductDesign from "./ProductDesign";
 const data = [
   "Web Design",
   "App Development",
-  "Graphic Design",
-  "Digital Marketing",
-  "SEO Optimization",
+  "Product Design",
 ];
 const Section = styled.div`
   height: 100vh;
@@ -50,7 +48,7 @@ const ListItem = styled.li`
   white-space: nowrap;
   -webkit-text-stroke: 1px white;
   &::after {
-    content: attr(text);
+    content: attr($text);
     position: absolute;
     top: 0;
     left: 0;
@@ -73,7 +71,7 @@ const Works = () => {
         <Left>
           <List>
             {data.map((item) => (
-              <ListItem key={item} text={item} onClick={() => setWorks(item)}>
+              <ListItem key={item} $text={item} onClick={() => setWorks(item)}>
                 {item}
               </ListItem>
             ))}
@@ -82,7 +80,7 @@ const Works = () => {
         <Right>
           {works === "Web Design" ? (
             <WebDesign />
-          ) : works === "Development" ? (
+          ) : works === "App Development" ? (
             <Development />
           ) : works === "Product Design" ? (
             <ProductDesign />

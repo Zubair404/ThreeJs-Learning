@@ -1,11 +1,16 @@
+import { Stage, OrbitControls } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
 import React from 'react'
+import Controller from './Controller.jsx'
 
 const Development = () => {
   return (
-    <div>
-      <h1>Development</h1>
-      <p>We build and maintain the digital products that help our clients succeed.</p>
-    </div>
+   <Canvas>
+        <Stage environment="city" intensity={0.6}>
+          <Controller />
+        </Stage>
+        <OrbitControls enableZoom={false} autoRotate />
+      </Canvas>
   )
 }
 

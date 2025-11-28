@@ -1,5 +1,5 @@
 //rafce
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import styled from "styled-components";
 import Map from "./Map";
@@ -20,13 +20,12 @@ const Container = styled.div`
   z-index: 1;
 `;
 const MapBackground = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  z-index: 0;
-  /* opacity: 0.6; */
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  position: relative;
 `;
 const Left = styled.div`
   flex: 1;
@@ -79,11 +78,16 @@ const TextArea = styled.textarea`
 `;
 const Right = styled.div`
   flex: 1;
+  height: 100%; // Set height to 100% for the right section
+  display: flex;
+  justify-content: center; // Center the map horizontally
+  align-items: center; // Center the map vertically
+  flex-direction: column;
 `;
 
 const Contacts = () => {
   const ref = useRef();
-  const [success, setSuccess] = React.useState(null);
+  const [success, setSuccess] = useState(null);
 
   const HandleSubmit = (e) => {
   e.preventDefault();
@@ -103,9 +107,7 @@ const Contacts = () => {
 };
   return (
     <Section>
-      <MapBackground>
-        <Map />
-      </MapBackground>
+      
       <Container>
         <Left>
           <FormWrapper>
@@ -119,7 +121,11 @@ const Contacts = () => {
             </Form>
           </FormWrapper>
         </Left>
-        <Right></Right>
+        <Right>
+          <MapBackground>
+            <Map />
+          </MapBackground>
+        </Right>
       </Container>
     </Section>
   );

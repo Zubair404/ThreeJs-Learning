@@ -1,11 +1,15 @@
 import React from 'react'
-
+import Controller from './Controller.jsx'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, Stage } from '@react-three/drei'
 const WebDesign = () => {
   return (
-    <div>
-      <h1>Web Design</h1>
-      <p>We create responsive and visually appealing websites that provide a great user experience.</p>
-    </div>
+      <Canvas>
+        <Stage environment="city" intensity={0.6}>
+          <Controller />
+        </Stage>
+        <OrbitControls enableZoom={false} />
+      </Canvas>
   )
 }
 

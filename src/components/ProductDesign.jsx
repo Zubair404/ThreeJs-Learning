@@ -1,11 +1,16 @@
+import { Stage, OrbitControls } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
 import React from 'react'
+import Controller from './Controller.jsx'
 
 const ProductDesign = () => {
   return (
-    <div>
-      <h1>Product Design</h1>
-      <p>We create user-centered designs that are both functional and aesthetically pleasing.</p>
-    </div>
+    <Canvas>
+        <Stage environment="city" intensity={0.6}>
+          <Controller />
+        </Stage>
+        <OrbitControls enableZoom={false} autoRotate />
+      </Canvas>
   )
 }
 

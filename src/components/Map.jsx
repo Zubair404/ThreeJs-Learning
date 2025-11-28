@@ -1,64 +1,39 @@
-import React from "react";
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  Annotation,
-  ZoomableGroup
-} from "react-simple-maps";
+import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
-const Map = () => {
+// Fix default marker icon paths so markers render correctly
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
+
+const Map = ({ center = [31.5497, 74.3436], zoom = 8 }) => {
   return (
-    <ComposableMap
-      projection="geoAzimuthalEqualArea"
-      projectionConfig={{
-        rotate: [-74, -32, 0], // Center on Pakistan
-        center: [-25, 0],
-        scale: 700
-      }}
-      style={{ width: "100%", height: "100%" }}
-    >
-      <Geographies
-        geography="./features.json"
-        fill="#2C065D"
-        stroke="#FFFFFF"
-        strokeWidth={0.5}
-      >
-        {({ geographies }) =>
-          geographies.map((geo) => (
-            <Geography key={geo.rsmKey} geography={geo} />
-          ))
-        }
-      </Geographies>
-      <Annotation
-        subject={[74.3587, 31.5204]}
-        dx={-45}
-        dy={-15}
-        connectorProps={{
-          stroke: "white",
-          strokeWidth: 2,
-          strokeLinecap: "round"
-        }}
-      >
-        <text x="-3" textAnchor="end" alignmentBaseline="middle" fill="white">
-          {"Lahore"}
-        </text>
-      </Annotation>
-      <Annotation
-        subject={[73.0479, 33.6844]}
-        dx={45}
-        dy={15}
-        connectorProps={{
-          stroke: "white",
-          strokeWidth: 2,
-          strokeLinecap: "round"
-        }}
-      >
-        <text x="3" textAnchor="start" alignmentBaseline="middle" fill="white">
-          {"Islamabad"}
-        </text>
-      </Annotation>
-    </ComposableMap>
+    <div style={{ width: '100%', height: '100%' }}> {/* Ensure full height */}
+      <MapContainer center={center} zoom={zoom} style={{ width: '100%', height: '100%' }}>
+        <TileLayer
+          attribution='&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[31.5497, 74.3436]}> {/* Lahore Marker */}
+          <Popup>
+            Lahore — customize this content as needed.
+          </Popup>
+        </Marker>
+        <Marker position={[33.6844, 73.0479]}> {/* Islamabad Marker */}
+          <Popup>
+            Islamabad — customize this content as needed.
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
   );
 };
 
