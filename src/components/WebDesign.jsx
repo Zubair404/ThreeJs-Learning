@@ -8,7 +8,7 @@ const WebDesign = () => {
         <Stage environment="city" intensity={0.6}>
           <Controller />
         </Stage>
-        <OrbitControls enableZoom={false} />
+        <OrbitControls enableZoom={false} autoRotate />
       </Canvas>
   )
 }

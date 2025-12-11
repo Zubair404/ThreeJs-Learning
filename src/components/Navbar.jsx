@@ -61,10 +61,10 @@ const Navbar = () => {
             <Links>
                 <Logo src='./img/logo.png' />
                 <List>
-                    <ListItem>Home</ListItem>
-                    <ListItem>Studio</ListItem>
-                    <ListItem>Works</ListItem>
-                    <ListItem>Contact</ListItem>
+                    <ListItem onClick={() => console.log("Home clicked")}>Home</ListItem>
+                    <ListItem onClick={() => console.log("Studio clicked")}>Studio</ListItem>
+                    <ListItem onClick={() => console.log("Works clicked")}>Works</ListItem>
+                    <ListItem onClick={() => console.log("Contact clicked")}>Contact</ListItem>
                 </List>
             </Links>
             <Icons>
